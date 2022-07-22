@@ -17,11 +17,10 @@ export const ListPage = () => {
 
   useEffect(() => {
     fetch('https://front-test-api.herokuapp.com/api/product')
-      .then(response => response.json())
-      .then( data => console.log( data ) )
+      .then( response => response.json() )
+      .then( data => setData(data) )
       .catch( error => console.log( error ) )
-    setData(data);
-  }, [data]);
+  }, []);
 
 
   return (
