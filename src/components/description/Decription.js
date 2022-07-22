@@ -1,10 +1,8 @@
 import React from 'react'
 import './description.scss';
+import Header from '../header/Header';
 
-function Decription () {
-  
-  return (
-    /* o Marca
+/* o Marca
 o Modelo
 o Precio
 o CPU
@@ -15,7 +13,13 @@ o Bateria
 o Camaras
 o Dimensiones
 o Peso */
-    <div>Decription</div>
+
+function Decription () {
+  
+  return (
+<Header/>
+    
+   
   )
 }
 

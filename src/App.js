@@ -1,13 +1,16 @@
-import ListView from './pages/listPage/ListPage';
-import Header from './components/header/Header';
-import './styles/app.scss';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import * as route from './routes';
+import {ListPage} from './pages/listPage/ListPage';
+
 
 function App() {
   return (
-    <>
-      <Header />
-      <ListView />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path={route.HOME} element={<ListPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

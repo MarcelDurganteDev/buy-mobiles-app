@@ -1,13 +1,20 @@
 import React from 'react'
 import './itemCard.scss';
 
-function ItemCard() {
+const ItemCard = ( {item}) => {
+  
   return (
     // o Imagen
     //Marca
     //Modelo
     //Precio
-    <div>ItemCard</div>
+
+    <div className='container'>
+      <img src={item.imgUrl} alt={item.brand} />
+      <div>{item.brand}</div>
+      <div>{item.model}</div>
+      <div>{item.price}</div>
+    </div>
   );
 }
 
