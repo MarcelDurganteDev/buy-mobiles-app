@@ -1,12 +1,13 @@
+import ListView from './pages/listPage/ListPage';
+import Header from './components/header/Header';
 import './styles/app.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Hello World!</p>
-      </header>
-    </div>
+    <>
+      <Header />
+      <ListView />
+    </>
   );
 }
 

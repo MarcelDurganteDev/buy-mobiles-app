@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+#RECURSOS
+##Integración API
+###Para poder realizar la prueba, se requiere integrar con un API para la gestión de los datos.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+El dominio del API será el mismo para todos los Endpoints, y será el siguiente:
+https://front-test-api.herokuapp.com/
 
-## Available Scripts
+Las definiciones de los Endpoints son los siguientes:
+####• Obtener el listado de productos
+Path
+GET /api/product
+Response
+[
+{
+id: 0001,
+...
+},
+{
+id: 0002,
+...
+}
+]
+####• Obtener el Detalle de producto
+Path
+GET /api/product/:id
+Response
+{
+id: 0001,
+...
+}
+####• Añadir producto a la cesta
+Path
+POST /api/cart
 
-In the project directory, you can run:
+Body
+{
+id: 0001,
+colorCode: 1,
+storageCode: 2
+}
+Response
+{
+count: 1
+}
 
-### `npm start`
+#Persistencia de datos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+##Se requiere, añadir un almacenaje en cliente de los datos que se reciban desde el API. Lo que
+se quiere ofrecer es un sistema de cacheo, para no se realicen cada vez peticiones al API. Por
+ellos, se require definir la siguiente funcionalidad:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+####• Se almacenará la información cada vez que se solicite al servicio del API
+####• Se guardará dicha información, y tendrá una expiración de 1 hora, una vez excedido
+dicho tiempo, deberá revalidarse la información
+####• Se podrá utilizar cualquier metodo de storage para almacenar dicha información, ya
+sea del navegador o en memoria, pero siempre en cliente.
